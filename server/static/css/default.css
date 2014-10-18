@@ -5,16 +5,15 @@ html {
 body {
 	margin-right: auto;
 	margin-left: auto;
-	vertical-align: center;
 	position: relative;
 }
 
-#container {
+.container {
 	text-align: center;
 	position: absolute;
 	top: 35%;
   	left: 50%;
-  	transform: translate(-50%, -50%);
+  	transform: translate(-50%, 50%);
 }
 
 .instruction, .input-text {
