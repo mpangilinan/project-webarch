@@ -20,8 +20,6 @@ $(function() {
 
     // Hide the input form
     $("#inputForm").hide();
-
-
   });
 
   $("#blomoAgain").click(function(e) {
