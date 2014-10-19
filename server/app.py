@@ -83,15 +83,17 @@ def short_post():
     short = request.args.get('short')
     url = request.args.get('url')
     db[short] = url
-    #return "Stored " + url + " in " + short
+    print short
+    print url
+    return "Stored " + str(url) + " in " + str(short)
 
 
 @app.route('/server/short/<short>', methods=['GET'])
 def short_get(short):
-    if (short not in db):
+    if (not (db.has_key(str(short)))):
        abort(404)
     else: 
-        return redirect(db[short])
+        return redirect(db[str(short)])
 
 if __name__ == "__main__":
     app.run(port=int(environ['FLASK_PORT']))
