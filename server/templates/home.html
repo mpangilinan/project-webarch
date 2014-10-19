@@ -4,25 +4,41 @@
 		<meta charset="utf-8">
 		<title>blomo</title>
 		<link href="../static/css/default.css" rel="stylesheet" type="text/css" media="all">
+        <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../js/main.js"></script>
 	</head>
 	<body>
 		<div class="container">
-		    <h1>blomo</h1>
+
             
 
-                    <div>
+                    <div id = "inputForm">
+                        <h1>blomo</h1>
+
                         <span><p class="instruction">Turn </p></span>
                         <span><label><input type="text" class="input-text" id="long-URL"></label></span>
                         <span></span><p class="instruction"> into </p></span>
                         <span><label><input type="text" class="input-text" id="short-URL"></label></span>
+
+                        <div>
+                            <input type="button" id="generateBlomo" value="blomo my URL">
+                        </div>
                     </div>
 
-                    <div>
-                        <input type="button" id="submit" value="blomo my URL">
-                    </div>
+
+
+                    <div id="confirmation">
+                      <h1>Here's your blomo'd URL</h1>
+                      <h3><span class = "shortenedURL"></span></h3>
+
+                      <div>
+                        <button type="submit" id="blomoAgain">Blomo another URL?</button>
+                      </div>
+                    </div>      
+                    
 
 		</div>
 	</body>
-    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="../js/main.js"></script>
+
 </html>
