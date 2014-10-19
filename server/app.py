@@ -86,7 +86,7 @@ def short_post():
     #return "Stored " + url + " in " + short
 
 
-@app.route('/server/short/<short>' methods=['GET'])
+@app.route('/server/short/<short>', methods=['GET'])
 def short_get(short):
     if (short not in db):
        abort(404)
