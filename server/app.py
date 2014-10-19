@@ -3,7 +3,7 @@
 import shelve
 from subprocess import check_output
 import flask
-from flask import request
+from flask import request, abort, redirect, url_for
 from os import environ
 
 app = flask.Flask(__name__)
@@ -78,6 +78,20 @@ def i253():
 
     return resp
 
+@app.route('/server/short', methods=['POST'])
+def short_post():
+    short = request.args.get('short')
+    url = request.args.get('url')
+    db[short] = url
+    #return "Stored " + url + " in " + short
+
+
+@app.route('/server/short/<short>' methods=['GET'])
+def short_get(short):
+    if (short not in db):
+       abort(404)
+    else: 
+        return redirect(db[short])
 
 if __name__ == "__main__":
     app.run(port=int(environ['FLASK_PORT']))
