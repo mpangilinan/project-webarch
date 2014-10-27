@@ -1,5 +1,6 @@
 html {
 	color: rgba(0, 0, 0, 0.8);
+	height: 100%;
 }
 
 body {
@@ -8,12 +9,13 @@ body {
 	position: relative;
 	background-color: #eeeeee;
 	text-align: center;
+	height: 100%;
 }
 
 #header {
 	background-color: #2BBBD7;
 	width: 100%;
-	height: 40%;
+	height: 35%;
 	position: fixed;
 	z-index: -1;
 
@@ -25,10 +27,11 @@ body {
 	border: 1px solid #e0e0e0;
 	background-color: #fafafa;
 	text-align: center;
-  	display: inline-block;
+  	display: block;
   	
-  	margin-top: 10%;
-
+	position: absolute;
+	top: calc(50% - 200px);
+	left: calc(50% - 150px);
 }
 
 
