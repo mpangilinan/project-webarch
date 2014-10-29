@@ -49,6 +49,7 @@ h2 {
 	font-weight: 300;
 	margin-bottom: 25px;
 	margin-top: 25px;
+	line-height: 1;
 }
 
 .instruction, .input-text, .shortenedURL {
@@ -95,6 +96,10 @@ button[type="submit"]  {
 
 button#blomoAgain {
 	width: 220px;
+}
+
+button#tryAgain {
+	width: 120px;
 }
 
 
