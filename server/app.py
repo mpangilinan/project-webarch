@@ -16,18 +16,15 @@ db = shelve.open("shorten.db")
 # Home Resource:
 # Only supports the GET method, returns a homepage represented as HTML
 ###
-@app.route('/home', methods=['GET'])
+@app.route('/short', methods=['GET'])
+@app.route('/', methods=['GET'])
 def home():
     """Builds a template based on a GET request, with some default
     arguements"""
-    index_title = request.args.get("title", "i253")
-    hello_name = request.args.get("name", "Jim")
     return flask.render_template(
-            'home.html',
-            title=index_title,
-            name=hello_name)
+            'home.html')
 
-@app.route('/server/short', methods=['POST'])
+@app.route('/short', methods=['POST'])
 def short_post():
     short = str (request.form.get('short'))
     url = str (request.form.get('url'))
@@ -37,7 +34,7 @@ def short_post():
     return "Stored " + url + " in " + short
 
 
-@app.route('/server/short/<short>', methods=['GET'])
+@app.route('/short/<short>', methods=['GET'])
 def short_get(short):
     if (not (db.has_key(str(short)))):
        abort(404)
