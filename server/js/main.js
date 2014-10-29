@@ -4,7 +4,7 @@ var shortURL = "";
 $(function() {
 
   // hide the confirmation page from view
-  $("#confirmation").hide();
+  // $("#confirmation").hide();
 
   // ---- event handler ---- //
   $("#generateBlomo").click(function(e) {
@@ -19,7 +19,7 @@ $(function() {
     $("#confirmation").show();
 
     // Hide the input form
-    $("#inputForm").hide();
+    // $("#inputForm").hide();
   });
 
   $("#blomoAgain").click(function(e) {
