@@ -24,7 +24,7 @@ $(function() {
 
   $("#blomoAgain").click(function(e) {
     $("#inputForm").show();   
-    $("#confirmation").hide();
+//    $("#confirmation").hide();
   });
 
 
