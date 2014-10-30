@@ -48,7 +48,7 @@ def short_post():
         short = hash_gen(5)
 
     if db.has_key(short):
-        return flask.render_template('error.html', error="short URL is being used. pick another."), 404
+        return flask.render_template('error.html', error="Short URL is already in use."), 404
  
     db[short] = url
     print short
@@ -58,7 +58,7 @@ def short_post():
 @app.route('/short/<short>', methods=['GET'])
 def short_get(short):
     if (not (db.has_key(str(short)))):
-        return flask.render_template('error.html', error="not a valid short URL"), 404
+        return flask.render_template('error.html', error="Short URL is not valid."), 404
     else: 
         return redirect(db[str(short)])
         
