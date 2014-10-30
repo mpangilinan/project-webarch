@@ -31,7 +31,6 @@ def http_check(url):
 # Home Resource:
 # Only supports the GET method, returns a homepage represented as HTML
 ###
-@app.route('/',      methods=['GET'])
 @app.route('/short', methods=['GET'])
 def home():
     """Builds a template based on a GET request, with some default
@@ -49,18 +48,18 @@ def short_post():
         short = hash_gen(5)
 
     if db.has_key(short):
-        return flask.render_template('error.html'), 404
+        return flask.render_template('error.html', error="short URL is being used. pick another."), 404
  
     db[short] = url
-    #print short
-    #print url
-    return flask.render_template("shorten.html")
+    print short
+    print url
+    return flask.render_template("shorten.html", short=short, url=url)
 
 
 @app.route('/short/<short>', methods=['GET'])
 def short_get(short):
     if (not (db.has_key(str(short)))):
-        return flask.render_template('error.html'), 404
+        return flask.render_template('error.html', error="not a valid short URL"), 404
     else: 
         return redirect(db[str(short)])
         
