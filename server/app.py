@@ -55,7 +55,6 @@ def short_post():
     print url
     return flask.render_template("shorten.html", short=short, url=url)
 
-
 @app.route('/short/<short>', methods=['GET'])
 def short_get(short):
     if (not (db.has_key(str(short)))):
