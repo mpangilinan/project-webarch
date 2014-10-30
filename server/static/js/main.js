@@ -11,13 +11,14 @@ $(function() {
 
     longURL = $("#long-URL").val();
     shortURL = $("#short-URL").val();
-    letters = /^[A-Za-z]_$/;
+    letters = "[a-zA-Z]+";
     
     // Validate short URL is only letters
     console.log(shortURL);
     if (!(shortURL == null || shortURL == "")) {
        console.log("null or blank");
        if (!(shortURL.match(letters))) {
+          console.log("not letters only");
           alert("Short path can contain only letters");
           return false;
        }
