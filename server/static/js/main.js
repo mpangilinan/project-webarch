@@ -1,20 +1,19 @@
 var longURL = "";
 var shortURL = "";
-
+var letters = "";
 $(function() {
 
   // ---- event handler ---- //
   $("#generateBlomo").click(function(e) {
+    
+
+
+
     longURL = $("#long-URL").val();
     shortURL = $("#short-URL").val();
-
-    if (longURL == null || longURL == "") {
-      alert("Please enter a URL to blomo");
-      return false;
-    }
-
+    letters = /^[A-Za-z]_$/;
+    
     // Validate short URL is only letters
-    var letters = /^[A-Za-z]+$/;
     console.log(shortURL);
     if (!(shortURL == null || shortURL == "")) {
        console.log("null or blank");
@@ -23,6 +22,15 @@ $(function() {
           return false;
        }
    } 
+
+
+
+    if (longURL == null || longURL == "") {
+      alert("Please enter a URL to blomo");
+      return false;
+    }
+
+
 
     console.log("Long URL is: " + longURL);
     console.log("Short URL is: " + shortURL);
