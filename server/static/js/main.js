@@ -24,9 +24,6 @@ $(function() {
        }
    } 
 
-    console.log("Long URL is: " + longURL);
-    console.log("Short URL is: " + shortURL);
-    $(".shortenedURL").empty().append(shortURL);
 
     // Show the confirmation page
     $("#confirmation").show();
