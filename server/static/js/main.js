@@ -13,6 +13,7 @@ $(function() {
       return false;
     }
 
+    // Validate short URL is only letters
     var letters = /^[A-Za-z]+$/;
     console.log(shortURL);
     if (!(shortURL == null || shortURL == "")) {
