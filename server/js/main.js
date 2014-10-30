@@ -3,14 +3,16 @@ var shortURL = "";
 
 $(function() {
 
-  // hide the confirmation page from view
-  // $("#confirmation").hide();
-
   // ---- event handler ---- //
   $("#generateBlomo").click(function(e) {
-    console.log("Do I ever get here?");
     longURL = $("#long-URL").val();
     shortURL = $("#short-URL").val();
+
+    if (longURL == null || longURL == "") {
+      alert("Please enter a URL to blomo");
+      return false;
+    }
+
     console.log("Long URL is: " + longURL);
     console.log("Short URL is: " + shortURL);
     $(".shortenedURL").empty().append(shortURL);

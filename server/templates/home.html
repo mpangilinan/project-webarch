@@ -17,17 +17,18 @@
     
 
     <div id = "inputForm">
-    
+      
       <h1>blomo</h1>
-
-      <div class="instruction">Turn</div><br>
-      <div class="input-text"><label><input type="text" id="long-URL" placeholder="paste url to blomo it"></label></div><br>
-      <div class="instruction">into</div><br>
-      <div class="input-text"><label><input type="text"  id="short-URL" placeholder="desired URL (optional)"></label></div>
+      <form name="blomo-form" method="POST">
+        <div class="instruction">Turn</div><br>
+        <div class="input-text"><label><input type="text" id="long-URL" placeholder="paste url to blomo it"></label></div><br>
+        <div class="instruction">into</div><br>
+        <div class="input-text"><label><input type="text"  id="short-URL" placeholder="desired URL (optional)"></label></div>
 
         <div>
-          <button type="submit" id="generateBlomo">blomo my URL!</button>
+          <button type="submit" id="generateBlomo" value="submit">blomo my URL!</button>
         </div>
+      </form>
 
     </div>
 
