@@ -16,13 +16,15 @@
 
 
     <div id="confirmation">
-      <h2>You just blomo'd</h2>
-      <h3><span class = "shortenedURL">{{url}}</span></h3>
+      <h2>You successfully blomo'd</h2>
+      <h3><span class="shortenedURL" id="fixed-width">{{url}}</span></h3>
       <h2>to</h2>
-      <h3><span class = "shortenedURL"><a href={{url}}> {{short}} </a></span></h3>
-      <div>
+      <h3><span class="shortenedURL"><a href={{url}}> {{short}} </a></span></h3>
+	<form action="./short" method="GET">     
+     <div>
         <button type="submit" id="blomoAgain">blomo another URL?</button>
       </div>
+       </form>
     </div>      
     
 

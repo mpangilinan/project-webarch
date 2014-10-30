@@ -40,24 +40,29 @@ h1 {
 	color: #F17E00;
 	font-size: 60px;
 	font-weight: 300;
-	margin-bottom: 25px;
+	margin-bottom: 20px;
 	margin-top: 25px;
 }
 
 h2 {
 	color: #F17E00;
-	font-size: 45px;
+	font-size: 41px;
 	font-weight: 300;
-	margin-bottom: 25px;
-	margin-top: 25px;
+	margin-bottom: 5px;
+	margin-top: 5px;
 	line-height: 1;
+}
+
+h3 {
+	margin-top:10px;
+	margin-bottom: 5px;
 }
 
 .instruction, .input-text, .shortenedURL {
 	display: inline-block;
 	position: relative;
 	margin-top: 5px;
-	margin-bottom: 5px;
+	margin-bottom: 8px;
 	color: #757575;
 	font-size: 25px;
 	font-weight: 300;
@@ -78,8 +83,8 @@ input[type="text"] {
 }
 
 button[type="submit"]  {
-	margin-top: 30px;
-	margin-bottom: 30px;
+	margin-top: 20px;
+	margin-bottom: 25px;
 	font-size: 20px;
 	font-weight: 300;
 	color: #ffffff;
@@ -103,5 +108,11 @@ button#tryAgain {
 	width: 120px;
 }
 
-
+#fixed-width {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    height: 50px;
+    width: 250px;
+}
 
