@@ -13,6 +13,7 @@ body {
 	width: 100%;
 }
 
+/* Light blue div at the top of the page */
 #header {
 	background-color: #2BBBD7;
 	width: 100%;
@@ -22,6 +23,7 @@ body {
 
 }
 
+/* Form */
 .container {
 	width: 300px;
 	height: 400px;
@@ -69,6 +71,7 @@ h3 {
 	font-weight: 300;
 }
 
+/* Styling input on form */
 input[type="text"] {
 	width: 200px;
 	height: 20px;
@@ -109,6 +112,7 @@ button#tryAgain {
 	width: 120px;
 }
 
+/* Make sure long URLs don't trail off the form */
 #fixed-width {
     overflow-x: scroll;
     overflow-y: hidden;
