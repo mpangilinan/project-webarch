@@ -5,10 +5,10 @@ $(function() {
 
   // ---- event handler ---- //
   $("#generateBlomo").click(function(e) {
-
+    
     longURL = $("#long-URL").val();
     shortURL = $("#short-URL").val();
-    letters = "[a-zA-Z]+";
+    letters = /^[0-9a-zA-Z]+$/;
     
     // Validate short URL is only letters
     console.log(shortURL);
@@ -16,7 +16,7 @@ $(function() {
        console.log("null or blank");
        if (!(shortURL.match(letters))) {
           console.log("not letters only");
-          alert("Short path can contain only letters");
+          alert("Short path can contain only alphanumeric characters");
           return false;
        }
    } 
