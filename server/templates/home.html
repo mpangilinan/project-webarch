@@ -7,29 +7,52 @@
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400' rel='stylesheet' type='text/css'>
   <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="static/js/main.js"></script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57510814-1', 'auto');
+  ga('send', 'pageview');
+
+  </script>
+
 </head>
 <body>
 
   <div id="header"></div>
 
-  <div class="container">
+  <div class="container" id="first-container">
 
     <div id = "inputForm">
-
-      <!-- Form for shortening URLs -->      
-      <h1>blomo</h1>
+      
+      <h1>blomo<span class="color-change">e</span></h1>
       <form name="blomo-form" method="POST" action="">
         <div class="instruction">Turn</div><br>
-        <div class="input-text"><label for="url"><input type="text" id="long-URL" name="url" placeholder="paste url to blomo it"></label></div><br>
+        <div class="input-text"><label for="url"><input type="text" id="long-URL" name="url" placeholder="paste url to blomoe it"></label></div><br>
         <div class="instruction">into</div><br>
         <div class="input-text"><label for="short"><input type="text"  id="short-URL" name="short" placeholder="desired URL (optional)"></label></div>
 
         <div>
-          <button type="submit" id="generateBlomo" value="submit">blomo my URL!</button>
+          <button type="submit" id="generateBlomo" value="submit">blomoe my URL!</button>
         </div>
+
       </form>
 
     </div>
+<!--
+    <div class="container">
+        <h2>Top blomoed URLs</h2>
+	<h3>blo.moe/alex</h3>
+	<h3>blo.moe/dhruv</h3>
+	<h3>blo.moe/melissa</h3>
+
+	<h1>1,993</h1>
+	<h2>blomoed URLs</h2>
+    </div>
+-->
   </div>
 </body>
 
