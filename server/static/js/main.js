@@ -46,15 +46,16 @@ $(function() {
     $("#most-visited").hide();
     $("#total-blomoed").hide();  
 
-  $(".stats").click(function(s) {
-      $(".card").addClass("flipped");
-      // setTimeout(function(){
+  // $(".stats").click(function(s) {
+  //     $(".card").addClass("flipped");
+  //     // setTimeout(function(){
 
-      //   $("#stats-data").show();
-      //   }, 100); 
-  });
+  //     //   $("#stats-data").show();
+  //     //   }, 100); 
+  // });
 
   $(".home").click(function(h) {
+    $(".container").removeClass("stats");
     $("#most-blomoed").hide();
     $("#most-visited").hide();
     $("#total-blomoed").hide();
@@ -63,43 +64,29 @@ $(function() {
     }, 100);
   });
 
-// $(".most-blomoed").click(function(b) {
-//     $("#inputForm").hide();
-    
-//     setTimeout(function() {
-//       $("#most-blomoed").show();
-//       $("#most-visited").show();
-//       $("#total-blomoed").show();
-//     }, 100);
-//   });
 
 
-  $(".most-blomoed").click(function(b) {
-    $("#inputForm").hide();
-    $("#most-visited").hide();
-    $("#total-blomoed").hide();
-    setTimeout(function() {
-      $("#most-blomoed").show();
-    }, 100);
-  });
+
+
+  // $(".most-visited").click(function(v) {
+  //   $("#inputForm").hide();
+  //   $("#most-blomoed").hide();
+  //   $("#total-blomoed").hide();
+  //   setTimeout(function() {
+  //     $("#most-visited").show();
+  //   }, 100);
+  // });
+
 
   $(".most-visited").click(function(v) {
     $("#inputForm").hide();
-    $("#most-blomoed").hide();
-    $("#total-blomoed").hide();
-    setTimeout(function() {
-      $("#most-visited").show();
-    }, 100);
-  });
+    $(".container").addClass("stats");
+    $("#most-blomoed").show();
+     $("#total-blomoed").show();
+    $("#most-visited").show();
 
-  $(".total").click(function(t) {
-    $("#inputForm").hide();
-    $("#most-blomoed").hide();
-    $("#most-visited").hide();
-    setTimeout(function() {
-      $("#total-blomoed").show();
-    }, 100);
-  });  
+  });
+ 
 
   $("#blomoAgain").click(function(e) {
     $("#inputForm").show();   

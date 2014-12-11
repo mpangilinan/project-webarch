@@ -47,7 +47,6 @@ nav {
 	border: 1px solid #e0e0e0;
 	background-color: #fafafa;
 	text-align: center;
-  	display: block;
   	padding-left: 5px;
         padding-right:5px;	
 	position: absolute;
@@ -55,6 +54,22 @@ nav {
 	top: 0; left: 0; bottom: 0; right: 0;
 }
 
+#stats-container {
+	width: 1000px;
+	height: 400px;
+	position: absolute;
+	margin:auto;
+	top: 0; left: 0; bottom: 0; right: 0;
+}
+.stats {
+	display: inline-block;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	position: relative;
+}
+
+/*
 .stats-data.flipped {
 	-webkit-transform: rotatey(-180deg);
 }
@@ -63,15 +78,15 @@ nav {
   -webkit-transform-style: preserve-3d;
   -webkit-transition: 0.5s;
 }
-
+*/
 .card, .container {
   -webkit-backface-visibility: hidden ;
   z-index: 2;
 }
-
+/*
 .card, .stats-data {
 	-webkit-transform: rotatey(-180deg);
-}
+}*/
 
 .color-change {
 	color: #2BBBD7;
