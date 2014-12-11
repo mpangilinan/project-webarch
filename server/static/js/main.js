@@ -26,6 +26,12 @@ $(function() {
       return false;
     }
 
+    if (shortURL.length>20) {
+      console.log(shortURL.length)
+      alert("Short path have a max of 20 characters");
+      return false;
+    }
+
     console.log("Long URL is: " + longURL);
     console.log("Short URL is: " + shortURL);
     $(".shortenedURL").empty().append(shortURL);
@@ -34,6 +40,66 @@ $(function() {
     $("#confirmation").show();
 
   });
+
+      
+  $("#most-blomoed").hide();
+    $("#most-visited").hide();
+    $("#total-blomoed").hide();  
+
+  $(".stats").click(function(s) {
+      $(".card").addClass("flipped");
+      // setTimeout(function(){
+
+      //   $("#stats-data").show();
+      //   }, 100); 
+  });
+
+  $(".home").click(function(h) {
+    $("#most-blomoed").hide();
+    $("#most-visited").hide();
+    $("#total-blomoed").hide();
+    setTimeout(function() {
+      $("#inputForm").show();
+    }, 100);
+  });
+
+// $(".most-blomoed").click(function(b) {
+//     $("#inputForm").hide();
+    
+//     setTimeout(function() {
+//       $("#most-blomoed").show();
+//       $("#most-visited").show();
+//       $("#total-blomoed").show();
+//     }, 100);
+//   });
+
+
+  $(".most-blomoed").click(function(b) {
+    $("#inputForm").hide();
+    $("#most-visited").hide();
+    $("#total-blomoed").hide();
+    setTimeout(function() {
+      $("#most-blomoed").show();
+    }, 100);
+  });
+
+  $(".most-visited").click(function(v) {
+    $("#inputForm").hide();
+    $("#most-blomoed").hide();
+    $("#total-blomoed").hide();
+    setTimeout(function() {
+      $("#most-visited").show();
+    }, 100);
+  });
+
+  $(".total").click(function(t) {
+    $("#inputForm").hide();
+    $("#most-blomoed").hide();
+    $("#most-visited").hide();
+    setTimeout(function() {
+      $("#total-blomoed").show();
+    }, 100);
+  });  
 
   $("#blomoAgain").click(function(e) {
     $("#inputForm").show();   
