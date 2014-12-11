@@ -1,14 +1,21 @@
 import shelve
 from subprocess import check_output
 import flask
-from flask import request, abort, redirect, url_for
+from flask import request, abort, redirect, url_for, Flask
 from os import environ
 import random, string
+from flaskext.mysql import MySQL
 
+mysql= MySQL()
 app = flask.Flask(__name__)
 app.debug = True
+app.config['MYSQL_DATABASE_USER'] = 'blomouser'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'info253'
+app.config['MYSQL_DATABASE_DB'] = 'blomo'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+mysql.init_app(app)
 
-db = shelve.open("shorten.db")
+db =["d"] # shelve.open("shorten.db")
 
 def hash_gen(n):
     """Returns a random string of len n alphabets"""
@@ -29,7 +36,7 @@ def http_check(url):
     url = "http://www." + url
     return url
 
-@app.route('/short', methods=['GET'])
+@app.route('/', methods=['GET'])
 def home():
     """Renders home Page via get request to server/short"""
     return flask.render_template(
@@ -51,7 +58,7 @@ def short_post():
     db[short] = url
     return flask.render_template("shorten.html", short=short, url=url)
 
-@app.route('/short/<short>', methods=['GET'])
+@app.route('/<short>', methods=['GET'])
 def short_get(short):
     """performs redirect if short url is in db.  returns 404 otherwise. """
     if (not (db.has_key(str(short)))):
@@ -60,4 +67,4 @@ def short_get(short):
         return redirect(db[str(short)])
         
 if __name__ == "__main__":
-    app.run(port=int(environ['FLASK_PORT']))
+    app.run()
