@@ -23,10 +23,7 @@ def hash_gen(n):
     temp = ""
     for i in range(0, n):
         temp += domain[random.randrange(0, 26)]
-    if db.has_key(temp):
-        return hash_gen(n)
-    else:
-        return temp
+    return temp
 
 def http_check(url):
     """Checks incoming url for all combinations of "www." and "http://" and unifies an output URL"""
@@ -46,18 +43,31 @@ def totalclicks():
 def topthreelinks():
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute("Select * from shorts order by numclicked desc limit 3")
+    cursor.execute("select url, sum(numclicked) from shorts group by url order by sum(numclicked) DESC limit 3")
     data = cursor.fetchall()
-    link1 = data[0][1]
-    link2 = data[1][1]
-    link3 = data[2][1]
-    return (link1, link2, link3)
+    link1 = data[0][0]
+    link2 = data[1][0]
+    link3 = data[2][0]
+    return link1, link2, link3
+
+def topblomoedlinks():
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute("select url, short, count(*) as numCounts from shorts group by url order by numCounts DESC limit 3")
+    data = cursor.fetchall()
+    link1 = data[0][0]
+    link2 = data[1][0]
+    link3 = data[2][0]
+    return link1, link2, link3
+
 
 @app.route('/', methods=['GET'])
 def home():
     """Renders home Page via get request to server/short"""
-    return flask.render_template(
-            'home.html')
+    tc = totalclicks()
+    tl1, tl2, tl3 = topthreelinks()
+    bl1, bl2, bl3 = topblomoedlinks()
+    return flask.render_template('home.html', tc=tc, tl1=tl1, tl2=tl2, tl3=tl3, bl1=bl1, bl2=bl2, bl3=bl3)
 
 @app.route('/', methods=['POST'])
 def short_post():
@@ -90,6 +100,7 @@ def short_get(short):
     if (data is None ):
         return flask.render_template('error.html', error="Short URL is not valid."), 404
     else:
+        #print topthreelinks()
         cursor.execute("UPDATE shorts SET numclicked=numclicked+1 where short='" + short + "'")
         conn.commit() 
         return redirect(data[1])
