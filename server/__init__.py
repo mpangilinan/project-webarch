@@ -36,6 +36,23 @@ def http_check(url):
     url = "http://www." + url
     return url
 
+def totalclicks():
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT SUM(numclicked) from shorts")
+    data = cursor.fetchone()
+    return  data[0]
+
+def topthreelinks():
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute("Select * from shorts order by numclicked desc limit 3")
+    data = cursor.fetchall()
+    link1 = data[0][1]
+    link2 = data[1][1]
+    link3 = data[2][1]
+    return (link1, link2, link3)
+
 @app.route('/', methods=['GET'])
 def home():
     """Renders home Page via get request to server/short"""
@@ -66,10 +83,18 @@ def short_post():
 @app.route('/<short>', methods=['GET'])
 def short_get(short):
     """performs redirect if short url is in db.  returns 404 otherwise. """
-    if (not (db.has_key(str(short)))):
+    conn = mysql.connect()
+    cursor = conn.cursor()   
+    cursor.execute("SELECT * from shorts where short='" + short + "'")
+    data = cursor.fetchone()
+    if (data is None ):
         return flask.render_template('error.html', error="Short URL is not valid."), 404
-    else: 
-        return redirect(db[str(short)])
+    else:
+        cursor.execute("UPDATE shorts SET numclicked=numclicked+1 where short='" + short + "'")
+        conn.commit() 
+        return redirect(data[1])
+
+
         
 if __name__ == "__main__":
     app.run()
