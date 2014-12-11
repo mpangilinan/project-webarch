@@ -36,13 +36,30 @@ def http_check(url):
     url = "http://www." + url
     return url
 
+def totalclicks():
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT SUM(numclicked) from shorts")
+    data = cursor.fetchone()
+    return  data[0]
+
+def topthreelinks():
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute("Select * from shorts order by numclicked desc limit 3")
+    data = cursor.fetchall()
+    link1 = data[0][1]
+    link2 = data[1][1]
+    link3 = data[2][1]
+    return (link1, link2, link3)
+
 @app.route('/', methods=['GET'])
 def home():
     """Renders home Page via get request to server/short"""
     return flask.render_template(
             'home.html')
 
-@app.route('/short', methods=['POST'])
+@app.route('/', methods=['POST'])
 def short_post():
     """handles Post request for short and Long url and checks for edge cases"""
     short = str (request.form.get('short'))
@@ -51,20 +68,33 @@ def short_post():
     
     if (short == ""):    #Uses random hash url if URL is left blank. 
         short = hash_gen(5)
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * from shorts where short='" + short + "'")
+    data = cursor.fetchone()
 
-    if db.has_key(short):    #Throws 404 if the user tries to set a short URL already in use
+    if data is not None: #Throws 404 if the user tries to set a short URL already in use
         return flask.render_template('error.html', error="Short URL is already in use."), 404
- 
-    db[short] = url
+    cursor.execute("INSERT into shorts (url, short, numclicked, lastaccess) VALUES ('" + url + "','" + short + "',0,CURDATE())")
+    conn.commit()
+    #db[short] = url
     return flask.render_template("shorten.html", short=short, url=url)
 
 @app.route('/<short>', methods=['GET'])
 def short_get(short):
     """performs redirect if short url is in db.  returns 404 otherwise. """
-    if (not (db.has_key(str(short)))):
+    conn = mysql.connect()
+    cursor = conn.cursor()   
+    cursor.execute("SELECT * from shorts where short='" + short + "'")
+    data = cursor.fetchone()
+    if (data is None ):
         return flask.render_template('error.html', error="Short URL is not valid."), 404
-    else: 
-        return redirect(db[str(short)])
+    else:
+        cursor.execute("UPDATE shorts SET numclicked=numclicked+1 where short='" + short + "'")
+        conn.commit() 
+        return redirect(data[1])
+
+
         
 if __name__ == "__main__":
     app.run()
