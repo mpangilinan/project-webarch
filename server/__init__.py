@@ -42,7 +42,7 @@ def home():
     return flask.render_template(
             'home.html')
 
-@app.route('/short', methods=['POST'])
+@app.route('/', methods=['POST'])
 def short_post():
     """handles Post request for short and Long url and checks for edge cases"""
     short = str (request.form.get('short'))
@@ -51,11 +51,16 @@ def short_post():
     
     if (short == ""):    #Uses random hash url if URL is left blank. 
         short = hash_gen(5)
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * from shorts where short='" + short + "'")
+    data = cursor.fetchone()
 
-    if db.has_key(short):    #Throws 404 if the user tries to set a short URL already in use
+    if data is not None: #Throws 404 if the user tries to set a short URL already in use
         return flask.render_template('error.html', error="Short URL is already in use."), 404
- 
-    db[short] = url
+    cursor.execute("INSERT into shorts (url, short, numclicked, lastaccess) VALUES ('" + url + "','" + short + "',0,CURDATE())")
+    conn.commit()
+    #db[short] = url
     return flask.render_template("shorten.html", short=short, url=url)
 
 @app.route('/<short>', methods=['GET'])
