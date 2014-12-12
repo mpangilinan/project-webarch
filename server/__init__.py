@@ -45,9 +45,9 @@ def topthreelinks():
     cursor = conn.cursor()
     cursor.execute("select url, short, sum(numclicked) from shorts group by url order by sum(numclicked) DESC limit 3")
     data = cursor.fetchall()
-    link1 = "blo.moe/" + data[0][1]
-    link2 = "blo.moe/" + data[1][1]
-    link3 = "blo.moe/" + data[2][1]
+    link1 = "http://blo.moe/" + data[0][1]
+    link2 = "http://blo.moe/" + data[1][1]
+    link3 = "http://blo.moe/" + data[2][1]
     return link1, link2, link3
 
 def topblomoedlinks():
