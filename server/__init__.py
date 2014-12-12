@@ -1,7 +1,7 @@
 import shelve
 from subprocess import check_output
 import flask
-from flask import request, abort, redirect, url_for, Flask
+from flask import request, abort, redirect, url_for, Flask, send_from_directory
 from os import environ
 import random, string
 from flaskext.mysql import MySQL
@@ -59,6 +59,11 @@ def topblomoedlinks():
     link2 = data[1][0]
     link3 = data[2][0]
     return link1, link2, link3
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 @app.route('/', methods=['GET'])
