@@ -36,18 +36,18 @@ def http_check(url):
 def totalclicks():
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute("SELECT SUM(numclicked) from shorts")
+    cursor.execute("select count(*) from shorts")
     data = cursor.fetchone()
     return  data[0]
 
 def topthreelinks():
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute("select url, sum(numclicked) from shorts group by url order by sum(numclicked) DESC limit 3")
+    cursor.execute("select url, short, sum(numclicked) from shorts group by url order by sum(numclicked) DESC limit 3")
     data = cursor.fetchall()
-    link1 = data[0][0]
-    link2 = data[1][0]
-    link3 = data[2][0]
+    link1 = "blo.moe/" + data[0][1]
+    link2 = "blo.moe/" + data[1][1]
+    link3 = "blo.moe/" + data[2][1]
     return link1, link2, link3
 
 def topblomoedlinks():
