@@ -64,8 +64,7 @@ nav {
 .stats {
 	display: inline-block;
 	float: left;
-	margin-left: 10px;
-	margin-right: 10px;
+	margin: 10px;
 	position: relative;
 }
 
@@ -83,10 +82,21 @@ nav {
   -webkit-backface-visibility: hidden ;
   z-index: 2;
 }
-/*
-.card, .stats-data {
-	-webkit-transform: rotatey(-180deg);
-}*/
+
+@media (max-width: 1000px) {
+  #stats-container {
+  	margin-top: 40px;
+	width: 700px;
+}
+}
+
+
+@media (max-width: 800px) {
+#stats-container {
+	width: 350px;
+	height: 450px;
+}
+}
 
 .color-change {
 	color: #2BBBD7;
@@ -122,12 +132,13 @@ h3 {
 }
 
 .top-title {
-	margin-top: 25px;
+	margin-top: 45px;
+	margin-bottom: 20px;
 }
 
 #blomo-count {
-	margin-top: 35px;
-	margin-bottom: 10px;
+	margin-top: 55px;
+	margin-bottom: 20px;
 	line-height: 1;
 }
 .instruction, .input-text, .shortenedURL {
